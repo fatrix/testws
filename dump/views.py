@@ -33,9 +33,8 @@ def dump_service(request):
     # get data from request
     try:
         # if no file is posted, raises IndexError
-        request.POST.items()[0]
         data = request.raw_post_data
-    except IndexError, e:
+    except Exception, e:
         data = None
         logger.error(e.message)
         response.status_code = 500
